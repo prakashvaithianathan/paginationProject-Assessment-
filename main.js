@@ -94,6 +94,7 @@ const data = async ()=>{
   //for button to next, previous button
  
   function newFunc(item,index,keyData){
+    console.log(index-1);
     movement(item,index-1,keyData);
   }
 
@@ -110,24 +111,30 @@ const data = async ()=>{
         
         mainFunction(item[n],parseInt(n),keyData);
         colorChange(n);
+        
       }
-      
+      if(n==0){
+        return mainFunction(item[n],parseInt(n),keyData);
+      }
       // console.log(item,n,keyData);
     
     })
    
     next.addEventListener('click',function(){
     
-     
+      
       // 
       if(n>=0 &&n<chunckedData.length-1){
         n=n+1;
+       
         mainFunction(item[n],parseInt(n),keyData);
         colorChange(n);
          }
         //  console.log(item,n,keyData);
        
-        
+        if(n==chunckedData.length-1){
+          return mainFunction(item[n],parseInt(n),keyData);
+        }
         
       })
    }
